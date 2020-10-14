@@ -20,13 +20,37 @@ const FuncComp = (props) => {
   )
 }
 
-
+let classStyle = 'color:red'
+let classNum = 0
 class ClassComp extends Component {
   state={
     number:this.props.initNumber,
     date:(new Date()).getTime()
   }
+
+  componentWillMount() {
+    console.log('%cclass => componentWillMount ' + (++classNum), classStyle)
+  }
+
+  componentDidMount() {
+    console.log('%cclass => componentDidMount ' + (++classNum), classStyle)
+  }
+
+  shouldComponentUpdate() {
+    console.log('%cclass => shouldComponentUpdate ' + (++classNum), classStyle)
+    return true
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log('%cclass => componentWillUpdate ' + (++classNum), classStyle)
+  }
+
+  componentDidUpdate(nextProps, nextState) {
+    console.log('%cclass => componentDidUpdate ' + (++classNum), classStyle)
+  }
+
   render() {
+    console.log('%cclass => render ' + (++classNum), classStyle)
     return (
       <div className="container">
         <h1>Class Component</h1>
